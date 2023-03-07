@@ -28,16 +28,16 @@ final = '|fgwl'
 
 def dfs(grafo, inicio, final):
     visitados = set()
-    pila = [(inicio, 0)]  # Agregar el nivel del nodo al recorrido
+    pila = [(inicio, 0 , [inicio])]  # Agregar el nivel del nodo al recorrido
     while pila:
-        (nodo, camino) = pila.pop()
+        (nodo, nivel, camino) = pila.pop()
+        if nodo == final:
+            return camino
         if nodo not in visitados:
-            if nodo == final:
-                return camino
             visitados.add(nodo)
-            for adyacente in grafo[nodo]:
-                pila.append((adyacente, camino + [adyacente]))
-    return visitados
+            for adyacente in reversed(grafo.get(nodo, [])):
+                pila.append((adyacente, nivel+1, camino + [adyacente]))
+    return 
 
 
 # Función para calcular las distancias del nodo inicial a los demás nodos del grafo
@@ -81,7 +81,7 @@ def graficar_nodos(grafo):
 
 # Impresion de DFS, Distancia y grafico con la libreria Matplotlib
 print("\nRecorrido DFS:")
-dfs(grafo, inicio)
+dfs(grafo, inicio, final)
 print("\nDistancia del nodo inicial:")
 distancias = calcular_distancias(grafo, inicio)
 for nodo, distancia in distancias.items():

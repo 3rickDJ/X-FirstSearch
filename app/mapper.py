@@ -23,5 +23,6 @@ if __name__ == "__main__":
         for v in value:
             G.add_edge(key, v)
 
-    nx.draw(G, with_labels=True)
+    pos = nx.spring_layout(G)
+    nx.draw(G, pos, with_labels=True)
     plt.show()

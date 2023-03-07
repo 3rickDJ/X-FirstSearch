@@ -1,3 +1,6 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
 file = "grafo.txt"
 with open(file, 'r') as f:
     lines = f.readlines()
@@ -14,4 +17,11 @@ def get_neighbors(node):
     return dic[node]
 
 if __name__ == "__main__":
-    print(get_neighbors("A"))
+    G = nx.Graph()
+    for key, value in dic.items():
+        G.add_node(key)
+        for v in value:
+            G.add_edge(key, v)
+
+    nx.draw(G, with_labels=True)
+    plt.show()

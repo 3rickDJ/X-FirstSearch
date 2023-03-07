@@ -9,6 +9,7 @@ dic = {}
 for line in lines:
     line = line.strip().split(" ")
     head, tail = line[0], line[1:]
+    # print(f"key: {head} => value: {tail}")
     dic[head] = tail
 
 # export this function and use it in another module
@@ -22,6 +23,6 @@ if __name__ == "__main__":
         for v in value:
             G.add_edge(key, v)
 
-    pos = nx.kamada_kawai_layout(G)
+    pos = nx.spring_layout(G)
     nx.draw(G, pos, with_labels=True)
     plt.show()

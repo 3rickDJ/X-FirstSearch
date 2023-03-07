@@ -24,8 +24,6 @@ inicio = 'wglf|'
 final = '|fgwl'
 
 # Función DFS para un grafo de enteros
-
-
 def dfs(grafo, inicio, final):
     visitados = set()
     pila = [(inicio, 0 , [inicio])]  # Agregar el nivel del nodo al recorrido
@@ -37,7 +35,7 @@ def dfs(grafo, inicio, final):
             visitados.add(nodo)
             for adyacente in reversed(grafo.get(nodo, [])):
                 pila.append((adyacente, nivel+1, camino + [adyacente]))
-    return 
+    return []
 
 
 # Función para calcular las distancias del nodo inicial a los demás nodos del grafo
@@ -74,8 +72,7 @@ def graficar_nodos(grafo):
     # Agregar etiquetas de distancia
     for nodo, distancia in distancias.items():
         pos_nodo = pos[nodo]
-        plt.text(pos_nodo[0], pos_nodo[1]+0.1,
-                 str(distancia), horizontalalignment='center')
+        plt.text(pos_nodo[0], pos_nodo[1]+0.1, str(distancia), horizontalalignment='center')
     plt.show()  # Muestra el grafico
 
 

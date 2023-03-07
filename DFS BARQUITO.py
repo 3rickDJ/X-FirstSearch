@@ -29,13 +29,13 @@ def dfs(grafo, inicio, final):
     pila = [(inicio, 0)]  # Agregar el nivel del nodo al recorrido
     while pila:
      (nodo, camino) = pila.pop()
-        if nodo not in visitados:
-            if nodo == final:
-                return camino
-            visitados.add(nodo)
-            for adyacente in grafo[nodo]:
+     if nodo not in visitados:
+        if nodo == final:
+           return camino
+        visitados.add(nodo)
+        for adyacente in grafo[nodo]:
                 pila.append((adyacente, camino + [adyacente]))
-    return []
+    return visitados
 
 
 # Función para calcular las distancias del nodo inicial a los demás nodos del grafo
